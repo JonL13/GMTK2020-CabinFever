@@ -6,28 +6,33 @@ sti = require "lib/sti"
 
 
 require 'src/Constants'
+require 'src/data/entity_data'
 
 require 'src/statemachine/BaseState'
 require 'src/statemachine/StateMachine'
 require 'src/statemachine/StateStack'
+require 'src/statemachine/entity/EntityIdleState'
+require 'src/statemachine/entity/EntityWalkState'
+require 'src/statemachine/entity/player/PlayerIdleState'
+require 'src/statemachine/entity/player/PlayerWalkState'
+
 require 'src/statemachine/game/StartState'
 require 'src/statemachine/game/PlayState'
 
 require 'src/util/DebugUtil'
 require 'src/util/GraphicsUtil'
 
-require 'src/world/House'
-require 'src/world/Tile'
-require 'src/world/TileConstants'
-require 'src/world/TileMap'
-
+require 'src/Animation'
+require 'src/Entity'
+require 'src/Player'
 
 gTextures = {
     ['title-background'] = love.graphics.newImage('graphics/mountain.png'),
+    ['sprites'] = love.graphics.newImage('graphics/sprites.png'),
 }
 
 gFrames = {
-    --['horrorHouse'] = GenerateQuads(gTextures['horrorHouse'], 16, 16),
+    ['sprites'] = GenerateQuads(gTextures['sprites'], 16, 16),
 }
 
 gFonts = {

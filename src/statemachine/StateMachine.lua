@@ -27,9 +27,6 @@ function StateMachine:render()
     self.current:render()
 end
 
---[[
-	Used for states that can be controlled by the AI to influence update logic.
-]]
 function StateMachine:processAI(params, dt)
     self.current:processAI(params, dt)
 end
