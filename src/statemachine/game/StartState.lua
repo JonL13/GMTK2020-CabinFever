@@ -10,6 +10,11 @@ function StartState:update(dt)
     if love.keyboard.wasPressed('escape') then
         love.event.quit()
     end
+
+    if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
+        gStateStack:pop()
+        gStateStack:push(PlayState())
+    end
 end
 
 function StartState:render()

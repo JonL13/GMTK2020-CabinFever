@@ -13,12 +13,15 @@ function love.load()
 
     love.graphics.setFont(gFonts['small'])
 
-    gStateMachine = StateMachine {
-        ['start'] = function() return StartState() end,
-        --['play'] = function() return PlayState() end,
-        --['game-over'] = function() return GameOverState() end
-    }
-    gStateMachine:change('start')
+    --gStateMachine = StateMachine {
+    --    ['start'] = function() return StartState() end,
+    --    ['play'] = function() return PlayState() end,
+    --    --['game-over'] = function() return GameOverState() end
+    --}
+    --gStateMachine:change('start')
+
+    gStateStack = StateStack()
+    gStateStack:push(StartState())
 
     --gSounds['music']:setLooping(true)
     --gSounds['music']:play()
@@ -40,13 +43,13 @@ end
 
 function love.update(dt)
     Timer.update(dt)
-    gStateMachine:update(dt)
+    gStateStack:update(dt)
 
     love.keyboard.keysPressed = {}
 end
 
 function love.draw()
     push:start()
-    gStateMachine:render()
+    gStateStack:render()
     push:finish()
 end
