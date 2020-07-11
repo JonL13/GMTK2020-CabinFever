@@ -6,7 +6,10 @@ sti = require "lib/sti"
 
 
 require 'src/Constants'
+
+
 require 'src/data/entity_data'
+require 'src/data/maps/cabin_map'
 
 require 'src/statemachine/BaseState'
 require 'src/statemachine/StateMachine'
@@ -22,6 +25,10 @@ require 'src/statemachine/game/PlayState'
 require 'src/util/DebugUtil'
 require 'src/util/GraphicsUtil'
 
+require 'src/world/Cabin'
+require 'src/world/Tile'
+require 'src/world/TileMap'
+
 require 'src/Animation'
 require 'src/Entity'
 require 'src/Player'
@@ -29,10 +36,12 @@ require 'src/Player'
 gTextures = {
     ['title-background'] = love.graphics.newImage('graphics/mountain.png'),
     ['sprites'] = love.graphics.newImage('graphics/sprites.png'),
+    ['tilesheet'] = love.graphics.newImage('graphics/HorrorHouse.png'),
 }
 
 gFrames = {
     ['sprites'] = GenerateQuads(gTextures['sprites'], 16, 16),
+    ['tilesheet'] = GenerateQuads(gTextures['tilesheet'], 16, 16),
 }
 
 gFonts = {

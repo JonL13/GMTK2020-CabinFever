@@ -12,6 +12,9 @@ function PlayerWalkState:init(player, map)
 end
 
 function PlayerWalkState:update(dt)
+    local tileX, tileY = self.map:convertPixelToTile(self.entity.x, self.entity.y)
+    print(string.format('tileX:%d, tileY:%d', tileX, tileY))
+
     if love.keyboard.isDown('left') then
         self.entity.direction = 'left'
     elseif love.keyboard.isDown('right') then

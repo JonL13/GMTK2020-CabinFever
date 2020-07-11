@@ -8,6 +8,7 @@ function Player:init(def)
         ['idle'] = function() return PlayerIdleState(self, self.map) end,
         ['walk'] = function() return PlayerWalkState(self, self.map) end,
     }
+    self:changeState('idle')
 end
 
 function Player:update(dt)

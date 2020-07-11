@@ -1,4 +1,4 @@
-return {
+cabin_map = {
   version = "1.4",
   luaversion = "5.1",
   tiledversion = "1.4.1",
