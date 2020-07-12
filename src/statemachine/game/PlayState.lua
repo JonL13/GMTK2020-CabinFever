@@ -13,8 +13,10 @@ function PlayState:init()
         animations = ENTITY_DEFS['player'].animations,
         walkSpeed = ENTITY_DEFS['player'].walkSpeed,
 
-        x = 209,
-        y = 321,
+        --x = 209,
+        --y = 321,
+        x = 210,
+        y = 322,
 
         health = ENTITY_DEFS['player'].maxHealth,
         width = 12,
@@ -45,10 +47,14 @@ function PlayState:update(dt)
         love.event.quit()
     end
 
+    if love.keyboard.wasPressed('p') then
+        print(string.format('x: %d y: %d', self.player.x, self.player.y))
+    end
+
     self.cabin:update(dt)
     self.player:update(dt)
 
-    self.cam:setPosition(self.player.x, self.player.y)
+    self.cam:setPosition(math.floor(self.player.x), math.floor(self.player.y))
 end
 
 function PlayState:render()

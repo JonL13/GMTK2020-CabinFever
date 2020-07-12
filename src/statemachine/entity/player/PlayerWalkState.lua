@@ -4,9 +4,6 @@ function PlayerWalkState:init(player, cabin)
     self.entity = player
     self.cabin = cabin
 
-    -- render offset for spaced character sprite
-    self.entity.offsetY = 5
-    self.entity.offsetX = 3
 
     self.entity:changeAnimation('walk')
 end
@@ -26,13 +23,4 @@ function PlayerWalkState:update(dt)
 
     -- perform base collision detection against walls
     EntityWalkState.update(self, dt)
-
-    -- if we bumped something when checking collision, check any object collisions
-    if self.bumped then
-        if self.entity.direction == 'left' then
-        elseif self.entity.direction == 'right' then
-        elseif self.entity.direction == 'up' then
-        else
-        end
-    end
 end

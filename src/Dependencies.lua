@@ -18,6 +18,8 @@ require 'src/statemachine/entity/EntityIdleState'
 require 'src/statemachine/entity/EntityWalkState'
 require 'src/statemachine/entity/player/PlayerIdleState'
 require 'src/statemachine/entity/player/PlayerWalkState'
+require 'src/statemachine/entity/zombie/ZombieIdleState'
+require 'src/statemachine/entity/zombie/ZombieWalkState'
 
 require 'src/statemachine/game/StartState'
 require 'src/statemachine/game/PlayState'
@@ -33,6 +35,7 @@ require 'src/world/TileMap'
 require 'src/Animation'
 require 'src/Entity'
 require 'src/Player'
+require 'src/Zombie'
 
 gTextures = {
     ['title-background'] = love.graphics.newImage('graphics/mountain.png'),

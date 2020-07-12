@@ -2,8 +2,6 @@ PlayerIdleState = Class{__includes = EntityIdleState}
 
 function PlayerIdleState:enter(params)
     -- render offset for spaced character sprite
-    self.entity.offsetY = 5
-    self.entity.offsetX = 3
 end
 
 --function PlayerIdleState:update(dt)

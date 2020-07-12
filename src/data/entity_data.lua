@@ -19,8 +19,13 @@ ENTITY_DEFS = {
         walkSpeed = ZOMBIE_WALK_SPEED,
         animations = {
             ['walk'] = {
-                frames = {16,17},
+                frames = {17,18},
                 interval = .6,
+                texture = 'sprites'
+            },
+            ['idle'] = {
+                frames = {16},
+                interval = 1,
                 texture = 'sprites'
             }
         }

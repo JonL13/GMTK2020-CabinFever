@@ -1,6 +1,6 @@
 Cabin = Class{}
 
-local generateFloors
+local generateLayers
 
 function Cabin:init(def)
     self.width = def.width
@@ -79,10 +79,30 @@ function Cabin:init(def)
         visible = true,
     }
 
+    self.enemies = {}
+    table.insert(self.enemies, Zombie{
+        x = 210,
+        y = 250,
+        cabin = self
+    })
+    table.insert(self.enemies, Zombie{
+        x = 17,
+        y = 178,
+        cabin = self
+    })
+    table.insert(self.enemies, Zombie{
+        x = 498,
+        y = 194,
+        cabin = self
+    })
 end
 
 function Cabin:update(dt)
     --self.floorLayer:update(dt)
+
+    for _, enemy in pairs(self.enemies) do
+        enemy:update(dt)
+    end
 end
 
 function Cabin:render()
@@ -97,13 +117,22 @@ function Cabin:render()
     else
         self.zombieDecorationLayer:render()
     end
+
+    for _, enemy in pairs(self.enemies) do
+        enemy:render()
+    end
 end
 
 function Cabin:canMoveOnTile(tileX, tileY)
-    if self.floorLayer.tiles[tileY][tileX].type == "floor" then
-        if self.objectLayer.tiles[tileY][tileX].type == "empty" then
+    if self.floorLayer.tiles[tileY][tileX].type == "floor"
+        and self.objectLayer.tiles[tileY][tileX].type == "empty"
+        and self.wallLayer.tiles[tileY][tileX].type ~= "collidable"
+        and self.wallLayer2.tiles[tileY][tileX].type ~= "collidable" then
             return true
         end
-    end
     return false
+end
+
+generateLayers = function(state)
+
 end
