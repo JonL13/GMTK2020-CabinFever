@@ -5,10 +5,11 @@ require 'src/Dependencies'
 function love.load()
     jDebug = false
     math.randomseed(os.time())
+    love.window.setIcon(gImageData['cabin-fever-icon'])
     love.window.setTitle('Cabin Fever')
 
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
-        fullscreen = false,
+        fullscreen = true,
         vsync = true,
         resizable = true
     })

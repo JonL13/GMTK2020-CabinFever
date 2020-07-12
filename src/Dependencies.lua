@@ -59,6 +59,10 @@ gFrames = {
     ['smoke-effect'] = GenerateQuads(gTextures['smoke-effect'], 16, 16),
 }
 
+gImageData = {
+    ['cabin-fever-icon'] = love.image.newImageData('graphics/cabin-fever-icon.png'),
+}
+
 gFonts = {
     ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
     ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
