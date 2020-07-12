@@ -7,6 +7,15 @@ function love.load()
     math.randomseed(os.time())
     love.window.setIcon(gImageData['cabin-fever-icon'])
     love.window.setTitle('Cabin Fever')
+    love.mouse.setVisible(false)
+
+    for _, source in pairs(gSoundEffects) do
+        source:setVolume(1)
+    end
+
+    for _, source in pairs(gMusic) do
+        source:setVolume(.6)
+    end
 
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = true,
@@ -19,8 +28,6 @@ function love.load()
     gStateStack = StateStack()
     gStateStack:push(StartState())
 
-    --gSounds['music']:setLooping(true)
-    --gSounds['music']:play()
 
     love.keyboard.keysPressed = {}
 end
