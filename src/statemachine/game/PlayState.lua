@@ -9,8 +9,8 @@ function PlayState:init()
         y = 90,
 
         health = ENTITY_DEFS['player'].maxHealth,
-        width = 12,
-        height = 12,
+        width = 8,
+        height = 8,
     }
 
     self.cabin = Cabin{

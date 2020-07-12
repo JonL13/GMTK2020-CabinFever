@@ -16,21 +16,21 @@ function PlayerAttackState:init(player, cabin)
         hitboxWidth = 16
         hitboxHeight = 16
         hitboxX = self.player.x - hitboxWidth
-        hitboxY = self.player.y - 1
+        hitboxY = self.player.y - 4
     elseif direction == 'right' then
         hitboxWidth = 16
         hitboxHeight = 16
         hitboxX = self.player.x + self.player.width
-        hitboxY = self.player.y - 1
+        hitboxY = self.player.y - 4
     elseif direction == 'up' then
         hitboxWidth = 16
         hitboxHeight = 16
-        hitboxX = self.player.x - 1
+        hitboxX = self.player.x - 4
         hitboxY = self.player.y - hitboxHeight
     else
         hitboxWidth = 16
         hitboxHeight = 16
-        hitboxX = self.player.x - 1
+        hitboxX = self.player.x - 4
         hitboxY = self.player.y + self.player.height
     end
 
@@ -84,9 +84,11 @@ function PlayerAttackState:render()
             self.attackHitbox.x, self.attackHitbox.y
     )
      --debug for player and hurtbox collision rects
-     --love.graphics.setColor(255, 0, 255, 255)
-     --love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
-     --love.graphics.rectangle('line', self.attackHitbox.x, self.attackHitbox.y,
-     --    self.attackHitbox.width, self.attackHitbox.height)
-     --love.graphics.setColor(255, 255, 255, 255)
+    if jDebug then
+        love.graphics.setColor(255, 0, 255, 255)
+        love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
+        love.graphics.rectangle('line', self.attackHitbox.x, self.attackHitbox.y,
+                self.attackHitbox.width, self.attackHitbox.height)
+        love.graphics.setColor(255, 255, 255, 255)
+    end
 end

@@ -3,6 +3,7 @@ love.graphics.setDefaultFilter('nearest', 'nearest')
 require 'src/Dependencies'
 
 function love.load()
+    jDebug = false
     math.randomseed(os.time())
     love.window.setTitle('Cabin Fever')
 

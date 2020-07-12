@@ -1,8 +1,8 @@
 Player = Class{__includes = Entity}
 
 function Player:init(def)
-    def.offsetX = 1
-    def.offsetY = 5
+    def.offsetX = 4
+    def.offsetY = 4
     Entity.init(self, def)
     self.cabin = def.cabin
 

@@ -12,7 +12,7 @@ function Cabin:init(def)
     self.tiledMap = def.tiledMap
 
     self.zombieSpawnTimer = 0
-    self.zombieSpawnDuration = math.random(10)
+    self.zombieSpawnDuration = math.random(1)
 
     local tiledMapFloorLayer, tiledMapWallLayer, tiledMapWallLayer2, tiledMapObjectWalkableLayer, tiledMapObjectLayer, tiledMapHumanDecorationLayer, tiledMapZombieDecorationLayer
     for _, layer in pairs(self.tiledMap.layers) do
@@ -92,7 +92,7 @@ function Cabin:update(dt)
 
         if enemy.isAlive and self.player:collide(enemy) then
             self.player:damage(1)
-            self.player:setInvulnerableDuration(.3)
+            self.player:setInvulnerableDuration(1)
         end
     end
 
@@ -105,7 +105,7 @@ function Cabin:update(dt)
 
     if self.zombieSpawnTimer > self.zombieSpawnDuration then
         self.zombieSpawnTimer = 0
-        self.zombieSpawnDuration = math.random(10)
+        self.zombieSpawnDuration = math.random(7)
         local spawnPoint = zombieSpawnPoints[math.random(#zombieSpawnPoints)]
         table.insert(self.enemies, Zombie{
             x = spawnPoint.x,
