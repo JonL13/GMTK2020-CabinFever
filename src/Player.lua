@@ -9,6 +9,7 @@ function Player:init(def)
     self.stateMachine = StateMachine{
         ['idle'] = function() return PlayerIdleState(self, self.cabin) end,
         ['walk'] = function() return PlayerWalkState(self, self.cabin) end,
+        ['attack'] = function() return PlayerAttackState(self, self.cabin) end,
     }
     self:changeState('idle')
 end

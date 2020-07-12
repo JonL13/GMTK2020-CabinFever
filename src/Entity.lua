@@ -35,7 +35,13 @@ end
 function Entity:damage(dmg)
     if self.invulnerableDuration <= 0 then
         self.health = self.health - dmg
+        print('health: ' .. self.health)
     end
+end
+
+function Entity:collide(target)
+    return not (self.x + self.width < target.x or self.x > target.x + target.width or
+            self.y + self.height < target.y or self.y > target.y + target.height)
 end
 
 function Entity:changeState(name, params)

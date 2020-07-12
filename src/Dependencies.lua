@@ -16,6 +16,7 @@ require 'src/statemachine/StateMachine'
 require 'src/statemachine/StateStack'
 require 'src/statemachine/entity/EntityIdleState'
 require 'src/statemachine/entity/EntityWalkState'
+require 'src/statemachine/entity/player/PlayerAttackState'
 require 'src/statemachine/entity/player/PlayerIdleState'
 require 'src/statemachine/entity/player/PlayerWalkState'
 require 'src/statemachine/entity/zombie/ZombieIdleState'
@@ -34,6 +35,7 @@ require 'src/world/TileMap'
 
 require 'src/Animation'
 require 'src/Entity'
+require 'src/Hitbox'
 require 'src/Player'
 require 'src/Zombie'
 
@@ -58,4 +60,8 @@ gFonts = {
 
 gMusic = {
     ['intro-music'] = love.audio.newSource('sounds/music/cabin-fever-main-theme.wav', 'stream'),
+}
+
+gSoundEffects = {
+    ['hit'] = love.audio.newSource('sounds/soundeffects/hit.wav', 'static'),
 }

@@ -12,7 +12,12 @@ ENTITY_DEFS = {
                 frames = {1},
                 interval = 1,
                 texture = 'sprites'
-            }
+            },
+            ['attack'] = {
+                frames = {1,2,3},
+                interval = .1,
+                texture = 'sprites'
+            },
         }
     },
     ['zombie'] = {
