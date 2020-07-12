@@ -11,19 +11,26 @@ require 'src/Constants'
 require 'src/data/entity_data'
 require 'src/data/maps/cabin_map'
 
+require 'src/gui/Panel'
+require 'src/gui/ProgressBar'
+require 'src/gui/TextBox'
+
 require 'src/statemachine/BaseState'
 require 'src/statemachine/StateMachine'
 require 'src/statemachine/StateStack'
+
 require 'src/statemachine/entity/EntityIdleState'
 require 'src/statemachine/entity/EntityWalkState'
 require 'src/statemachine/entity/player/PlayerAttackState'
+require 'src/statemachine/entity/player/PlayerCrazyState'
 require 'src/statemachine/entity/player/PlayerIdleState'
 require 'src/statemachine/entity/player/PlayerWalkState'
 require 'src/statemachine/entity/zombie/ZombieIdleState'
 require 'src/statemachine/entity/zombie/ZombieWalkState'
 
-require 'src/statemachine/game/StartState'
+require 'src/statemachine/game/MessageState'
 require 'src/statemachine/game/PlayState'
+require 'src/statemachine/game/StartState'
 
 require 'src/util/DebugUtil'
 require 'src/util/GraphicsUtil'

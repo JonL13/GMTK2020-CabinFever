@@ -6,10 +6,14 @@ function Player:init(def)
     Entity.init(self, def)
     self.cabin = def.cabin
 
+    self.isCrazy = false
+    self.craziness = 30
+
     self.stateMachine = StateMachine{
         ['idle'] = function() return PlayerIdleState(self, self.cabin) end,
         ['walk'] = function() return PlayerWalkState(self, self.cabin) end,
         ['attack'] = function() return PlayerAttackState(self, self.cabin) end,
+        ['crazy'] = function() return PlayerCrazyState(self, self.cabin) end,
     }
     self:changeState('idle')
 end

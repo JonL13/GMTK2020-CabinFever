@@ -1,11 +1,3 @@
---[[
-    GD50
-    Legend of Zelda
-
-    Author: Colton Ogden
-    cogden@cs50.harvard.edu
-]]
-
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
@@ -32,9 +24,6 @@ function PlayState:init()
 
     self.cam = gamera.new(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)
     self.cam:setWindow(0,0,VIRTUAL_WIDTH,VIRTUAL_HEIGHT)
-
-    gMusic['intro-music']:setLooping(true)
-    gMusic['intro-music']:play()
 end
 
 function PlayState:enter(params)
@@ -72,4 +61,9 @@ function PlayState:render()
         heartFrame = 7
     end
     love.graphics.draw(gTextures['tilesheet'], gFrames['tilesheet'][heartFrame], 10, 10)
+
+    if self.player.isCrazy then
+        print_r(self.player.stateMachine.current.crazyBar)
+        self.player.stateMachine.current.crazyBar:render()
+    end
 end

@@ -73,37 +73,20 @@ function Cabin:init(def)
         tileData = tiledMapHumanDecorationLayer.data,
         width = tiledMapHumanDecorationLayer.width,
         height = tiledMapHumanDecorationLayer.height,
-        visible = false,
+        visible = true,
     }
     self.zombieDecorationLayer = TileMap{
         type = "noncollidable",
         tileData = tiledMapZombieDecorationLayer.data,
         width = tiledMapZombieDecorationLayer.width,
         height = tiledMapZombieDecorationLayer.height,
-        visible = true,
+        visible = false,
     }
 
     self.enemies = {}
-    --table.insert(self.enemies, Zombie{
-    --    x = 210,
-    --    y = 322,
-    --    cabin = self
-    --})
-    --table.insert(self.enemies, Zombie{
-    --    x = 17,
-    --    y = 178,
-    --    cabin = self
-    --})
-    --table.insert(self.enemies, Zombie{
-    --    x = 498,
-    --    y = 194,
-    --    cabin = self
-    --})
 end
 
 function Cabin:update(dt)
-    --self.floorLayer:update(dt)
-
     for _, enemy in pairs(self.enemies) do
         enemy:update(dt)
 
@@ -132,6 +115,16 @@ function Cabin:update(dt)
         })
     end
     self.zombieSpawnTimer = self.zombieSpawnTimer + dt
+end
+
+function Cabin:switchDecoration(decorationType)
+    if decorationType == "zombie" then
+        self.zombieDecorationLayer.visible = true
+        self.humanDecorationLayer.visible = false
+    else
+        self.zombieDecorationLayer.visible = false
+        self.humanDecorationLayer.visible = true
+    end
 end
 
 function Cabin:render()

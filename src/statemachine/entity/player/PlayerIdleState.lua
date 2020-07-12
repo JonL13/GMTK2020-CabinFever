@@ -13,6 +13,10 @@ function PlayerIdleState:update(dt)
         self.entity:changeState('attack')
     end
 
+    if love.keyboard.wasPressed('c') then
+        self.entity:changeState('crazy')
+    end
+
     if love.keyboard.isDown('left')
             or love.keyboard.isDown('right')
             or love.keyboard.isDown('up')

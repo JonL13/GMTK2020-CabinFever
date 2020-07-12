@@ -3,6 +3,7 @@ PlayerWalkState = Class{__includes = EntityWalkState}
 function PlayerWalkState:init(player, cabin)
     self.entity = player
     self.cabin = cabin
+    self.entity.walkSpeed = PLAYER_WALK_SPEED
 
     self.entity:changeAnimation('walk')
 end

@@ -16,3 +16,12 @@ function GenerateQuads(atlas, tilewidth, tileheight)
 
     return spritesheet
 end
+
+function makeEven(numberToRound)
+    local number = math.floor(numberToRound)
+    if number % 2 == 0 then
+        return number
+    else
+        return number - 1
+    end
+end

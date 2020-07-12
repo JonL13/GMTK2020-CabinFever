@@ -18,6 +18,11 @@ ENTITY_DEFS = {
                 interval = .1,
                 texture = 'sprites'
             },
+            ['crazy'] = {
+                frames = {2,18,3,17},
+                interval = .2,
+                texture = 'sprites'
+            },
         }
     },
     ['zombie'] = {
