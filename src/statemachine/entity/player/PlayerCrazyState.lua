@@ -39,21 +39,18 @@ function PlayerCrazyState:update(dt)
 
     if self.moveDuration == 0 or self.bumped then
         -- set an initial move duration and direction
-        self.moveDuration = math.random(3)
+        self.moveDuration = math.random(1)
         self.entity.direction = directions[math.random(#directions)]
     elseif self.movementTimer > self.moveDuration then
         self.movementTimer = 0
-        -- chance to go idle
-        if math.random(30) == 1 then
-            self.entity:changeState('idle')
-        else
-            self.moveDuration = math.random(6)
-            self.entity.direction = directions[math.random(#directions)]
-        end
+        self.moveDuration = math.random(1)
+        self.entity.direction = directions[math.random(#directions)]
     end
+    self.movementTimer = self.movementTimer + dt
 
     if self.sanity > self.entity.craziness then
         self.entity.isCrazy = false
+        self.entity.crazyTimer = 0
         self.cabin:switchDecoration("human")
         self.entity:changeState('idle')
     end

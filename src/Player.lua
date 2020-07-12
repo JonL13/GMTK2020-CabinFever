@@ -8,6 +8,8 @@ function Player:init(def)
 
     self.isCrazy = false
     self.craziness = 30
+    self.crazyTimer = 0
+    self.crazyDuration = math.random(30)
 
     self.stateMachine = StateMachine{
         ['idle'] = function() return PlayerIdleState(self, self.cabin) end,
@@ -19,6 +21,15 @@ function Player:init(def)
 end
 
 function Player:update(dt)
+    if self.crazyTimer > self.crazyDuration then
+        --print('crazy time!')
+        self.crazyTimer = 0
+        self.crazyDuration = math.random(30)
+        self:changeState('crazy')
+    end
+    self.crazyTimer = self.crazyTimer + dt
+    --print(string.format("duration: %d timer: %d", self.crazyDuration, self.crazyTimer))
+
     Entity.update(self, dt)
 end
 
