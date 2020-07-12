@@ -15,14 +15,23 @@ function StartState:update(dt)
 
     if love.keyboard.wasPressed('enter') or love.keyboard.wasPressed('return') then
         gStateStack:push(MessageState {
+            y = VIRTUAL_HEIGHT / 2 - 16,
             text = "Ouch! I almost made it to Cliff's cabin when I got bit at the supermarket. It's been 6 days since the outbreak of Cozid-20. Thankfully I'm here now but I'm running a bit of a fever...",
             onClose = function()
                 gStateStack:push(MessageState {
-                    text = "Press arrow keys or WASD to move.\nPress spacebar to attack.\nPress escape to quit.\nBreak your fever.\nSurvive and kill zombies.",
-                    height = 48,
+                    text = "Press arrow keys or WASD to move.\nPress spacebar to attack.\nPress escape to quit.",
+                    height = 32,
+                    y = VIRTUAL_HEIGHT / 2 - 16,
                     onClose = function()
-                        gStateStack:pop()
-                        gStateStack:push(PlayState())
+                        gStateStack:push(MessageState {
+                            text = "Don't let the zombies touch you.\nBreak your fever.\nSurvive and kill zombies.",
+                            height = 32,
+                            y = VIRTUAL_HEIGHT / 2 - 16,
+                            onClose = function()
+                                gStateStack:pop()
+                                gStateStack:push(PlayState())
+                            end
+                        })
                     end
                 })
             end
