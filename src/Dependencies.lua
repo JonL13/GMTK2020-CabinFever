@@ -3,10 +3,10 @@ Event = require 'lib/knife.event'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
 sti = require "lib/sti"
-
+--camera = require "lib/camera"
+gamera = require "lib/gamera"
 
 require 'src/Constants'
-
 
 require 'src/data/entity_data'
 require 'src/data/maps/cabin_map'
@@ -24,6 +24,7 @@ require 'src/statemachine/game/PlayState'
 
 require 'src/util/DebugUtil'
 require 'src/util/GraphicsUtil'
+require 'src/util/TileUtil'
 
 require 'src/world/Cabin'
 require 'src/world/Tile'

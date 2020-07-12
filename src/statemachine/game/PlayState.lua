@@ -9,20 +9,9 @@
 PlayState = Class{__includes = BaseState}
 
 function PlayState:init()
-    --self.map = sti("src/data/maps/cabin_map.lua")
-    --
-    --local stiMapPlayer
-    --for _, object in pairs(self.map.objects) do
-    --    if object.layer.name == "Player" then
-    --        stiMapPlayer = object
-    --        break
-    --    end
-    --end
-
     self.player = Player{
         animations = ENTITY_DEFS['player'].animations,
         walkSpeed = ENTITY_DEFS['player'].walkSpeed,
-        map = self.map,
 
         x = 209,
         y = 321,
@@ -38,6 +27,12 @@ function PlayState:init()
         player = self.player,
         tiledMap = cabin_map
     }
+
+    self.player.cabin = self.cabin
+
+    self.cam = gamera.new(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)
+    self.cam:setWindow(0,0,VIRTUAL_WIDTH,VIRTUAL_HEIGHT)
+
 end
 
 function PlayState:enter(params)
@@ -48,11 +43,15 @@ function PlayState:update(dt)
         love.event.quit()
     end
 
-    self.player:update(dt)
     self.cabin:update(dt)
+    self.player:update(dt)
+
+    self.cam:setPosition(self.player.x, self.player.y)
 end
 
 function PlayState:render()
-    self.player:render()
-    self.cabin:render()
+    self.cam:draw(function()
+        self.cabin:render()
+        self.player:render()
+    end)
 end

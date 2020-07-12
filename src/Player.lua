@@ -2,11 +2,11 @@ Player = Class{__includes = Entity}
 
 function Player:init(def)
     Entity.init(self, def)
-    self.map = def.map
+    self.cabin = def.cabin
 
     self.stateMachine = StateMachine{
-        ['idle'] = function() return PlayerIdleState(self, self.map) end,
-        ['walk'] = function() return PlayerWalkState(self, self.map) end,
+        ['idle'] = function() return PlayerIdleState(self, self.cabin) end,
+        ['walk'] = function() return PlayerWalkState(self, self.cabin) end,
     }
     self:changeState('idle')
 end

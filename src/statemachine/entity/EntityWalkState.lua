@@ -1,10 +1,10 @@
 EntityWalkState = Class{__includes = BaseState}
 
-function EntityWalkState:init(entity, map)
+function EntityWalkState:init(entity, cabin)
     self.entity = entity
     self.entity:changeAnimation('walk')
 
-    self.map = map
+    self.cabin = cabin
 
     -- used for AI control
     self.moveDuration = 0
@@ -14,9 +14,25 @@ function EntityWalkState:init(entity, map)
     self.bumped = false
 end
 
-function EntityWalkState:update(dt, map)
+function EntityWalkState:update(dt, cabin)
     -- assume we didn't hit a wall
     self.bumped = false
+    local tileX, tileY
+    if self.entity.direction == 'left' then
+        tileX, tileY = convertPixelToTile (self.entity.x - 2, self.entity.y)
+    elseif self.entity.direction == 'right' then
+        tileX, tileY = convertPixelToTile (self.entity.x + self.entity.width + 2, self.entity.y)
+    elseif self.entity.direction == 'up' then
+        tileX, tileY = convertPixelToTile (self.entity.x, self.entity.y - 2)
+    else
+        tileX, tileY = convertPixelToTile (self.entity.x, self.entity.y + self.entity.height + 2)
+    end
+
+    if not self.cabin:canMoveOnTile(tileX, tileY) then
+        self.bumped = true
+    end
+
+    --print(string.format("bumped: %s", tostring(self.bumped)))
 
     if(self.bumped == false) then
         if self.entity.direction == 'left' then

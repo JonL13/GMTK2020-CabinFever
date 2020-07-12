@@ -92,10 +92,18 @@ function Cabin:render()
     self.objectWalkableLayer:render()
     self.objectLayer:render()
 
-    print(tostring(self.humanDecorationLayer.visible))
     if self.humanDecorationLayer.visible then
         self.humanDecorationLayer:render()
     else
         self.zombieDecorationLayer:render()
     end
+end
+
+function Cabin:canMoveOnTile(tileX, tileY)
+    if self.floorLayer.tiles[tileY][tileX].type == "floor" then
+        if self.objectLayer.tiles[tileY][tileX].type == "empty" then
+            return true
+        end
+    end
+    return false
 end

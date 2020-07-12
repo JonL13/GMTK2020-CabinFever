@@ -10,8 +10,6 @@ function Entity:init(def)
 
     self.walkSpeed = def.walkSpeed
     self.health = def.health
-
-
 end
 
 function Entity:createAnimations(animations)

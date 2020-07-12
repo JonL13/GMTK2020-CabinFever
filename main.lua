@@ -1,9 +1,10 @@
+love.graphics.setDefaultFilter('nearest', 'nearest')
+
 require 'src/Dependencies'
 
 function love.load()
     math.randomseed(os.time())
     love.window.setTitle('Cabin Fever')
-    love.graphics.setDefaultFilter('nearest', 'nearest')
 
     push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
@@ -12,13 +13,6 @@ function love.load()
     })
 
     love.graphics.setFont(gFonts['small'])
-
-    --gStateMachine = StateMachine {
-    --    ['start'] = function() return StartState() end,
-    --    ['play'] = function() return PlayState() end,
-    --    --['game-over'] = function() return GameOverState() end
-    --}
-    --gStateMachine:change('start')
 
     gStateStack = StateStack()
     gStateStack:push(StartState())
