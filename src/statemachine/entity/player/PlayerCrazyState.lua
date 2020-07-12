@@ -25,8 +25,7 @@ function PlayerCrazyState:init(player, cabin)
         color = {r = .29, g = .41, b = .18},
     }
 
-    --gMusic['intro-music']:setLooping(true)
-    gMusic['intro-music']:pause()
+    gMusic['main-music']:pause()
     gMusic['fever-rising-music']:play()
 end
 
@@ -57,7 +56,7 @@ function PlayerCrazyState:update(dt)
         self.entity.crazyTimer = 0
         self.cabin:switchDecoration("human")
         self.entity:changeState('idle')
-        gMusic['intro-music']:play()
+        gMusic['main-music']:play()
         gMusic['fever-rising-music']:pause()
     end
 

@@ -27,6 +27,9 @@ function PlayState:init()
 end
 
 function PlayState:enter(params)
+    gMusic['intro-music']:stop()
+    gMusic['main-music']:setLooping(true)
+    gMusic['main-music']:play()
 end
 
 function PlayState:update(dt)

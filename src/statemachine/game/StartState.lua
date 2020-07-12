@@ -4,6 +4,8 @@ function StartState:init()
 end
 
 function StartState:enter(params)
+    gMusic['fever-rising-music']:stop()
+    gMusic['main-music']:stop()
     gMusic['intro-music']:setLooping(true)
     gMusic['intro-music']:play()
 end

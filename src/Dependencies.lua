@@ -70,7 +70,8 @@ gFonts = {
 }
 
 gMusic = {
-    ['intro-music'] = love.audio.newSource('sounds/music/cabin-fever-main-theme.wav', 'stream'),
+    ['intro-music'] = love.audio.newSource('sounds/music/intro-theme.wav', 'stream'),
+    ['main-music'] = love.audio.newSource('sounds/music/cabin-fever-main-theme.wav', 'stream'),
     ['fever-rising-music'] = love.audio.newSource('sounds/music/fever-rising.wav', 'stream'),
 }
 
