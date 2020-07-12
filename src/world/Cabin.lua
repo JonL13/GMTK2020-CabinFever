@@ -92,22 +92,21 @@ function Cabin:update(dt)
 
         if enemy.isAlive and self.player:collide(enemy) then
             self.player:damage(1)
-            self.player:setInvulnerableDuration(.5)
+            self.player:setInvulnerableDuration(.3)
         end
     end
 
     for i = #self.enemies, 1, -1 do
         if not self.enemies[i].isAlive then
+            self.player.zombiesKilled = self.player.zombiesKilled + 1
             table.remove(self.enemies, i)
         end
     end
 
     if self.zombieSpawnTimer > self.zombieSpawnDuration then
-        print('spawning zombie!')
         self.zombieSpawnTimer = 0
-        self.zombieSpawnDuration = math.random(15)
+        self.zombieSpawnDuration = math.random(10)
         local spawnPoint = zombieSpawnPoints[math.random(#zombieSpawnPoints)]
-        print_r(spawnPoint)
         table.insert(self.enemies, Zombie{
             x = spawnPoint.x,
             y = spawnPoint.y,

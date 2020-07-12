@@ -37,7 +37,6 @@ function Entity:damage(dmg)
     if self.invulnerableDuration <= 0 then
         self.health = self.health - dmg
         -- TODO: add sound
-        print('health: ' .. self.health)
         if self.health <= 0 then
             self.isAlive = false
         end
@@ -54,7 +53,9 @@ function Entity:changeState(name, params)
 end
 
 function Entity:setInvulnerableDuration(time)
-    self.invulnerableDuration = time
+    if self.invulnerableDuration <= 0 then
+        self.invulnerableDuration = time
+    end
 end
 
 function Entity:changeAnimation(name)

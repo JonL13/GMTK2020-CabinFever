@@ -57,7 +57,7 @@ function PlayerAttackState:update(dt)
 
         if enemy:collide(self.attackHitbox) then
             enemy:damage(1)
-            enemy:setInvulnerableDuration(.2)
+            enemy:setInvulnerableDuration(.3)
         end
     end
 

@@ -42,6 +42,28 @@ function PlayState:update(dt)
     self.player:update(dt)
 
     self.cam:setPosition(math.floor(self.player.x), math.floor(self.player.y))
+
+    if self.player.health <= 0 then
+        local endText
+        if self.player.zombiesKilled == 0 then
+            endText = string.format("I didn't kill a single one of them...", self.player.zombiesKilled)
+        elseif self.player.zombiesKilled < 5 then
+            endText = string.format("Only killed %d of them...", self.player.zombiesKilled)
+        elseif self.player.zombiesKilled >= 5 and self.player.zombiesKilled < 10  then
+            endText = string.format("Mom would be proud, I killed %d of them...", self.player.zombiesKilled)
+        else
+            endText = string.format("BRAINS AND GUTS, I KILLED %d OF 'EM...", self.player.zombiesKilled)
+        end
+
+        gStateStack:push(MessageState {
+            text = endText,
+            height = 16,
+            onClose = function()
+                gStateStack:pop()
+                gStateStack:push(StartState())
+            end
+        })
+    end
 end
 
 function PlayState:render()
@@ -63,7 +85,6 @@ function PlayState:render()
     love.graphics.draw(gTextures['tilesheet'], gFrames['tilesheet'][heartFrame], 10, 10)
 
     if self.player.isCrazy then
-        print_r(self.player.stateMachine.current.crazyBar)
         self.player.stateMachine.current.crazyBar:render()
     end
 end
