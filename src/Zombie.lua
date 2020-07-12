@@ -8,7 +8,7 @@ function Zombie:init(def)
 
     def.width = 12
     def.height = 12
-    def.health = 1
+    def.health = 3
 
     Entity.init(self, def)
     self.cabin = def.cabin

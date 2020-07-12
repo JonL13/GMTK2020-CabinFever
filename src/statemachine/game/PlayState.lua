@@ -13,10 +13,8 @@ function PlayState:init()
         animations = ENTITY_DEFS['player'].animations,
         walkSpeed = ENTITY_DEFS['player'].walkSpeed,
 
-        --x = 209,
-        --y = 321,
-        x = 210,
-        y = 322,
+        x = 368,
+        y = 90,
 
         health = ENTITY_DEFS['player'].maxHealth,
         width = 12,

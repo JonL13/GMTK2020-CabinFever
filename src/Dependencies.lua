@@ -43,11 +43,13 @@ gTextures = {
     ['title-background'] = love.graphics.newImage('graphics/mountain.png'),
     ['sprites'] = love.graphics.newImage('graphics/sprites.png'),
     ['tilesheet'] = love.graphics.newImage('graphics/HorrorHouse.png'),
+    ['smoke-effect'] = love.graphics.newImage('graphics/smoke-effect.png'),
 }
 
 gFrames = {
     ['sprites'] = GenerateQuads(gTextures['sprites'], 16, 16),
     ['tilesheet'] = GenerateQuads(gTextures['tilesheet'], 16, 16),
+    ['smoke-effect'] = GenerateQuads(gTextures['smoke-effect'], 16, 16),
 }
 
 gFonts = {

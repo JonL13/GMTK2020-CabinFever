@@ -1,6 +1,7 @@
 Cabin = Class{}
 
 local generateLayers
+local zombieSpawnPoints = {{x = 210, y = 322}, {x = 17, y = 178}, {x = 498, y = 194}}
 
 function Cabin:init(def)
     self.width = def.width
@@ -9,6 +10,9 @@ function Cabin:init(def)
     self.player = def.player
 
     self.tiledMap = def.tiledMap
+
+    self.zombieSpawnTimer = 0
+    self.zombieSpawnDuration = math.random(10)
 
     local tiledMapFloorLayer, tiledMapWallLayer, tiledMapWallLayer2, tiledMapObjectWalkableLayer, tiledMapObjectLayer, tiledMapHumanDecorationLayer, tiledMapZombieDecorationLayer
     for _, layer in pairs(self.tiledMap.layers) do
@@ -80,21 +84,21 @@ function Cabin:init(def)
     }
 
     self.enemies = {}
-    table.insert(self.enemies, Zombie{
-        x = 210,
-        y = 250,
-        cabin = self
-    })
-    table.insert(self.enemies, Zombie{
-        x = 17,
-        y = 178,
-        cabin = self
-    })
-    table.insert(self.enemies, Zombie{
-        x = 498,
-        y = 194,
-        cabin = self
-    })
+    --table.insert(self.enemies, Zombie{
+    --    x = 210,
+    --    y = 322,
+    --    cabin = self
+    --})
+    --table.insert(self.enemies, Zombie{
+    --    x = 17,
+    --    y = 178,
+    --    cabin = self
+    --})
+    --table.insert(self.enemies, Zombie{
+    --    x = 498,
+    --    y = 194,
+    --    cabin = self
+    --})
 end
 
 function Cabin:update(dt)
@@ -103,12 +107,31 @@ function Cabin:update(dt)
     for _, enemy in pairs(self.enemies) do
         enemy:update(dt)
 
-        if self.player:collide(enemy) then
-            print('player collided with enemy')
+        if enemy.isAlive and self.player:collide(enemy) then
             self.player:damage(1)
             self.player:setInvulnerableDuration(.5)
         end
     end
+
+    for i = #self.enemies, 1, -1 do
+        if not self.enemies[i].isAlive then
+            table.remove(self.enemies, i)
+        end
+    end
+
+    if self.zombieSpawnTimer > self.zombieSpawnDuration then
+        print('spawning zombie!')
+        self.zombieSpawnTimer = 0
+        self.zombieSpawnDuration = math.random(15)
+        local spawnPoint = zombieSpawnPoints[math.random(#zombieSpawnPoints)]
+        print_r(spawnPoint)
+        table.insert(self.enemies, Zombie{
+            x = spawnPoint.x,
+            y = spawnPoint.y,
+            cabin = self
+        })
+    end
+    self.zombieSpawnTimer = self.zombieSpawnTimer + dt
 end
 
 function Cabin:render()

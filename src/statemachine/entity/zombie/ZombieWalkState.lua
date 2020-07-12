@@ -19,7 +19,7 @@ function ZombieWalkState:update(dt)
 
     if self.moveDuration == 0 or self.bumped then
         -- set an initial move duration and direction
-        self.moveDuration = math.random(9)
+        self.moveDuration = math.random(6)
         self.entity.direction = directions[math.random(#directions)]
         self.entity:changeAnimation('walk')
     elseif self.movementTimer > self.moveDuration then
@@ -82,7 +82,7 @@ function ZombieWalkState:render()
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
             math.floor(self.entity.x - self.entity.offsetX), math.floor(self.entity.y - self.entity.offsetY))
 
-     love.graphics.setColor(255, 0, 255, 255)
-     love.graphics.rectangle('line', self.entity.x, self.entity.y, self.entity.width, self.entity.height)
-     love.graphics.setColor(255, 255, 255, 255)
+     --love.graphics.setColor(255, 0, 255, 255)
+     --love.graphics.rectangle('line', self.entity.x, self.entity.y, self.entity.width, self.entity.height)
+     --love.graphics.setColor(255, 255, 255, 255)
 end

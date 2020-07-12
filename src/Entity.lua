@@ -16,6 +16,7 @@ function Entity:init(def)
     self.health = def.health
 
     self.invulnerableDuration = 0
+    self.isAlive = true -- ?? for zombies?
 end
 
 function Entity:createAnimations(animations)
@@ -35,7 +36,11 @@ end
 function Entity:damage(dmg)
     if self.invulnerableDuration <= 0 then
         self.health = self.health - dmg
+        -- TODO: add sound
         print('health: ' .. self.health)
+        if self.health <= 0 then
+            self.isAlive = false
+        end
     end
 end
 

@@ -36,6 +36,13 @@ function PlayerAttackState:init(player, cabin)
 
     self.attackHitbox = Hitbox(hitboxX, hitboxY, hitboxWidth, hitboxHeight)
     self.player:changeAnimation('attack')
+
+    self.smokeAnimation = Animation{
+        texture = "smoke-effect",
+        interval = .15,
+        frames = {1,2,3},
+        looping = false
+    }
 end
 
 function PlayerAttackState:enter(params)
@@ -62,6 +69,8 @@ function PlayerAttackState:update(dt)
     if love.keyboard.wasPressed('space') then
         self.player:changeState('attack')
     end
+
+    self.smokeAnimation:update(dt)
 end
 
 function PlayerAttackState:render()
@@ -69,10 +78,15 @@ function PlayerAttackState:render()
     love.graphics.draw(gTextures[anim.texture], gFrames[anim.texture][anim:getCurrentFrame()],
             math.floor(self.player.x - self.player.offsetX), math.floor(self.player.y - self.player.offsetY))
 
+    love.graphics.draw(
+            gTextures[self.smokeAnimation.texture],
+            gFrames[self.smokeAnimation.texture][self.smokeAnimation:getCurrentFrame()],
+            self.attackHitbox.x, self.attackHitbox.y
+    )
      --debug for player and hurtbox collision rects
-     love.graphics.setColor(255, 0, 255, 255)
-     love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
-     love.graphics.rectangle('line', self.attackHitbox.x, self.attackHitbox.y,
-         self.attackHitbox.width, self.attackHitbox.height)
-     love.graphics.setColor(255, 255, 255, 255)
+     --love.graphics.setColor(255, 0, 255, 255)
+     --love.graphics.rectangle('line', self.player.x, self.player.y, self.player.width, self.player.height)
+     --love.graphics.rectangle('line', self.attackHitbox.x, self.attackHitbox.y,
+     --    self.attackHitbox.width, self.attackHitbox.height)
+     --love.graphics.setColor(255, 255, 255, 255)
 end
