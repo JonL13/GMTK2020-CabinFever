@@ -56,7 +56,7 @@ function PlayerAttackState:update(dt)
     for _, enemy in pairs(self.cabin.enemies) do
 
         if enemy:collide(self.attackHitbox) then
-            enemy:damage(1)
+            enemy:damage(1, "enemy")
             enemy:setInvulnerableDuration(.3)
         end
     end

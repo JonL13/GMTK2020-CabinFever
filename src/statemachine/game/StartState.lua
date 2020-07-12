@@ -18,8 +18,8 @@ function StartState:update(dt)
             text = "Ouch! I almost made it to Cliff's cabin when I got bit at the supermarket. It's been 6 days since the outbreak of Cozid-20. Thankfully I'm here now but I'm running a bit of a fever...",
             onClose = function()
                 gStateStack:push(MessageState {
-                    text = "Use arrow keys or WASD to move.\n Use spacebar to attack.\nSurvive and kill zombies.",
-                    height = 32,
+                    text = "Press arrow keys or WASD to move.\nPress spacebar to attack.\nPress escape to quit.\nBreak your fever.\nSurvive and kill zombies.",
+                    height = 48,
                     onClose = function()
                         gStateStack:pop()
                         gStateStack:push(PlayState())

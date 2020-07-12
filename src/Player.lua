@@ -23,6 +23,13 @@ function Player:init(def)
 end
 
 function Player:update(dt)
+
+    if jDebug and love.keyboard.wasPressed('c') then
+        self.crazyTimer = 0
+        self.crazyDuration = math.random(40)
+        self:changeState('crazy')
+    end
+
     if self.crazyTimer > self.crazyDuration then
         self.crazyTimer = 0
         self.crazyDuration = math.random(40)

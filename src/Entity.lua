@@ -33,10 +33,16 @@ function Entity:createAnimations(animations)
     return animationsReturned
 end
 
-function Entity:damage(dmg)
+function Entity:damage(dmg, type)
     if self.invulnerableDuration <= 0 then
         self.health = self.health - dmg
-        -- TODO: add sound
+        local sound = 'zombiegrunt' .. tostring(math.random(5))
+        gSoundEffects[sound]:stop()
+        gSoundEffects[sound]:play()
+        if type == "enemy" then
+
+        end
+
         if self.health <= 0 then
             self.isAlive = false
         end

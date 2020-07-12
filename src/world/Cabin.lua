@@ -91,8 +91,9 @@ function Cabin:update(dt)
         enemy:update(dt)
 
         if enemy.isAlive and self.player:collide(enemy) then
+            gSoundEffects['player-attacked']:play()
             self.player:damage(1)
-            self.player:setInvulnerableDuration(1)
+            self.player:setInvulnerableDuration(3)
         end
     end
 

@@ -2,8 +2,6 @@ Class = require 'lib/class'
 Event = require 'lib/knife.event'
 push = require 'lib/push'
 Timer = require 'lib/knife.timer'
-sti = require "lib/sti"
---camera = require "lib/camera"
 gamera = require "lib/gamera"
 
 require 'src/Constants'
@@ -73,8 +71,15 @@ gFonts = {
 
 gMusic = {
     ['intro-music'] = love.audio.newSource('sounds/music/cabin-fever-main-theme.wav', 'stream'),
+    ['fever-rising-music'] = love.audio.newSource('sounds/music/fever-rising.wav', 'stream'),
 }
 
 gSoundEffects = {
     ['hit'] = love.audio.newSource('sounds/soundeffects/hit.wav', 'static'),
+    ['player-attacked'] = love.audio.newSource('sounds/soundeffects/player-attacked-male.wav', 'static'),
+    ['zombiegrunt1'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts1.wav', 'static'),
+    ['zombiegrunt2'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts2.wav', 'static'),
+    ['zombiegrunt3'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts3.wav', 'static'),
+    ['zombiegrunt4'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts4.wav', 'static'),
+    ['zombiegrunt5'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts5.wav', 'static'),
 }

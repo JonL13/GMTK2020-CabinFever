@@ -12,6 +12,10 @@ function MessageState:init(def)
 end
 
 function MessageState:update(dt)
+    if love.keyboard.wasPressed('escape') then
+        love.event.quit()
+    end
+
     if self.canInput then
         self.textbox:update(dt)
 
