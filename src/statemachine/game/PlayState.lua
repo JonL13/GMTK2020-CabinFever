@@ -33,6 +33,8 @@ function PlayState:init()
     self.cam = gamera.new(0,0,WINDOW_WIDTH, WINDOW_HEIGHT)
     self.cam:setWindow(0,0,VIRTUAL_WIDTH,VIRTUAL_HEIGHT)
 
+    gMusic['intro-music']:setLooping(true)
+    gMusic['intro-music']:play()
 end
 
 function PlayState:enter(params)

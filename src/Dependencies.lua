@@ -52,3 +52,7 @@ gFonts = {
     ['gothic-medium'] = love.graphics.newFont('fonts/GothicPixels.ttf', 16),
     ['gothic-large'] = love.graphics.newFont('fonts/GothicPixels.ttf', 32),
 }
+
+gMusic = {
+    ['intro-music'] = love.audio.newSource('sounds/music/cabin-fever-main-theme.wav', 'stream'),
+}
