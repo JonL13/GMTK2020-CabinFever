@@ -6,8 +6,8 @@ function Zombie:init(def)
 
     def.offsetY = 3
 
-    def.width = 16
-    def.height = 16
+    def.width = 12
+    def.height = 12
     def.health = 1
 
     Entity.init(self, def)

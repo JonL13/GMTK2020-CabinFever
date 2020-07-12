@@ -62,4 +62,16 @@ function PlayState:render()
         self.cabin:render()
         self.player:render()
     end)
+
+    local heartFrame
+    if self.player.health == 3 then
+        heartFrame = 1
+    elseif self.player.health == 2 then
+        heartFrame = 3
+    elseif self.player.health == 1 then
+        heartFrame = 5
+    else
+        heartFrame = 7
+    end
+    love.graphics.draw(gTextures['tilesheet'], gFrames['tilesheet'][heartFrame], 10, 10)
 end

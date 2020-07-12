@@ -102,6 +102,12 @@ function Cabin:update(dt)
 
     for _, enemy in pairs(self.enemies) do
         enemy:update(dt)
+
+        if self.player:collide(enemy) then
+            print('player collided with enemy')
+            self.player:damage(1)
+            self.player:setInvulnerableDuration(.5)
+        end
     end
 end
 

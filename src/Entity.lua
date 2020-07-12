@@ -14,6 +14,8 @@ function Entity:init(def)
 
     self.walkSpeed = def.walkSpeed
     self.health = def.health
+
+    self.invulnerableDuration = 0
 end
 
 function Entity:createAnimations(animations)
@@ -31,11 +33,17 @@ function Entity:createAnimations(animations)
 end
 
 function Entity:damage(dmg)
-    self.health = self.health - dmg
+    if self.invulnerableDuration <= 0 then
+        self.health = self.health - dmg
+    end
 end
 
 function Entity:changeState(name, params)
     self.stateMachine:change(name, params)
+end
+
+function Entity:setInvulnerableDuration(time)
+    self.invulnerableDuration = time
 end
 
 function Entity:changeAnimation(name)
@@ -47,6 +55,10 @@ function Entity:update(dt)
 
     if self.currentAnimation then
         self.currentAnimation:update(dt)
+    end
+
+    if self.invulnerableDuration > 0 then
+        self.invulnerableDuration = self.invulnerableDuration - dt
     end
 end
 
