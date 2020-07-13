@@ -76,7 +76,7 @@ gMusic = {
 }
 
 gSoundEffects = {
-    ['hit'] = love.audio.newSource('sounds/soundeffects/hit.wav', 'static'),
+    ['hit'] = love.audio.newSource('sounds/soundeffects/thud.wav', 'static'),
     ['player-attacked'] = love.audio.newSource('sounds/soundeffects/player-attacked-male.wav', 'static'),
     ['zombiegrunt1'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts1.wav', 'static'),
     ['zombiegrunt2'] = love.audio.newSource('sounds/soundeffects/ZombieGrunts2.wav', 'static'),
