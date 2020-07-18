@@ -106,7 +106,7 @@ function Cabin:update(dt)
 
     if self.zombieSpawnTimer > self.zombieSpawnDuration then
         self.zombieSpawnTimer = 0
-        self.zombieSpawnDuration = math.random(5)
+        self.zombieSpawnDuration = math.random(3)
         local spawnPoint = zombieSpawnPoints[math.random(#zombieSpawnPoints)]
         table.insert(self.enemies, Zombie{
             x = spawnPoint.x,
